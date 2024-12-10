@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delicias de Cupcakes</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300&display=swap">
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: 'Playfair Display', serif;
+            margin: 0;
+            padding: 0;
+            padding-top: 100px; /* Espacio para la barra fija */
+            background-color: #fff8e6;
+            color: #6b4226;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 3rem;
+            margin: 20px 0;
+            color: #ff79c6;
+            text-transform: uppercase;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #ff6b6b;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 100px auto 0;
+            padding: 20px;
+        }
+
+        /* Barra de navegación */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background-color: #fff;
+            border-bottom: 1px solid #eee;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .navbar .logo img {
+            height: 80px;
+            width: auto;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links li {
+            display: inline;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #000;
+            font-weight: bold;
+            padding: 5px 10px;
+        }
+
+        .nav-links a:hover {
+            color: #ff6b6b;
+        }
+
+        .btn-pedido {
+            background-color: #ff79c6;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            border: none;
+        }
+
+        .btn-pedido:hover {
+            background-color: #ff4f9b;
+        }
+
+        /* Galería de productos */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            background-color: #fff;
+            border: 2px solid #d4ad76;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .card img {
+            width: 100%; /* La imagen se ajusta al ancho de su contenedor */
+            height: 200px; /* Limita la altura */
+            object-fit: cover; /* Recorta la imagen si no encaja exactamente */
+            border-radius: 10px; /* Añade esquinas redondeadas como en tu imagen de ejemplo */
+            border-bottom: 2px solid #d4ad76;
+        }
+
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card h3 {
+            margin: 15px 0;
+            font-size: 1.5rem;
+            color: #6b4226;
+        }
+
+        .card p {
+            margin: 10px;
+            font-size: 1rem;
+        }
+
+        .card .price {
+            font-weight: bold;
+            color: #ff6b6b;
+        }
+
+        /* Responsividad */
+        @media (max-width: 768px) {
+            .gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+
+         /* Footer */
+         .footer {
+            background-color: #4a0e0e;
+            color: #ffffff;
+            padding: 20px;
+        }
+        .footer-content {
+            display: flex;
+            max-width: 1200px;
+            margin: 0 auto;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 20px 0;
+        }
+        .logo-section {
+            flex: 1;
+            padding-right: 20px;
+            border-right: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .logo {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .tagline {
+            font-style: italic;
+            font-size: 14px;
+        }
+        .description {
+            font-size: 12px;
+            margin-top: 20px;
+        }
+        .info-section {
+            flex: 2;
+            display: flex;
+            flex-direction: column;
+            padding-left: 20px;
+        }
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .info-column {
+            flex: 1;
+        }
+        .info-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .info-content {
+            font-size: 12px;
+        }
+        .search-bar {
+            display: flex;
+        }
+        .search-input {
+            flex-grow: 1;
+            padding: 5px;
+            border: none;
+            background-color: transparent;
+            border-bottom: 1px solid #ffffff;
+            color: #ffffff;
+        }
+        .search-button {
+            background-color: #ffffff;
+            color: #4a0e0e;
+            border: none;
+            padding: 5px 15px;
+            cursor: pointer;
+        }
+        /* Botón regenerar con temática renacentista moderna */
+.btn-regenerate {
+    background-color: #c4511a;
+    color: #fff;
+    padding: 12px 30px;
+    border-radius: 10px;
+    font-family: 'Playfair Display', serif;
+    font-weight: bold;
+    border: 2px solid #b8860b;
+    text-transform: uppercase;
+    text-decoration: none; /* Eliminar subrayado */
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn-regenerate:hover {
+    background-color: #a03e16;
+    transform: scale(1.05);
+}
+
+/* Centrar el botón */
+.regenerate-section {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+}
+
+    </style>
+</head>
+<body>
+    <!-- Barra de navegación -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="img/LOGO.png" alt="Logo">
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">INICIO</a></li>
+            <li><a href="menu.html">MENÚ</a></li>
+            <li><a href="about.html">ACERCA DE</a></li>
+            <li><a href="promo.html">PROMOCIONES</a></li>
+            <li><a href="FAQ.html">FAQ</a></li>
+            <li><a href="contact.html">CONTACTO</a></li>
+        </ul>
+        <a href="#" class="btn-pedido">Hacer pedido</a>
+    </nav>
+
+    <header>
+        <h1>CUPCAKES DELICIOSOS</h1>
+        <h2>¡Dulzura en cada bocado!</h2>
+    </header>
+    <div class="container">
+        <section class="gallery">
+            <!-- Tarjetas de productos -->
+            <div class="card">
+                <img src="img/cup vani.jpg" alt="Cupcake Vainilla">
+                <h3>Vainilla Esponjosa</h3>
+                <p>Una base suave con toques de vainilla.</p>
+                <p class="price">Bs. 10</p>
+            </div>
+            <div class="card">
+                <img src="img/cup choco.jpg" alt="Cupcake Chocolate">
+                <h3>Chocolate Intenso</h3>
+                <p>El paraíso de los amantes del cacao.</p>
+                <p class="price">Bs. 12</p>
+            </div>
+            <div class="card">
+                <a href="producto.html"><img src="img/cup fresa.jpg" alt="Cupcake Fresa"></a>
+                <h3>Fresa Cremosa</h3>
+                <p>Fresca, frutal y deliciosa.</p>
+                <p class="price">Bs. 14</p>
+            </div>
+            <div class="card">
+                <img src="img/cup limon.jpg" alt="Cupcake Limón">
+                <h3>Limón y Menta</h3>
+                <p>Refrescante combinación cítrica.</p>
+                <p class="price">Bs. 11</p>
+            </div>
+            <div class="card">
+                <img src="img/cup velvey.jpg" alt="Cupcake Red Velvet">
+                <h3>Red Velvet</h3>
+                <p>El clásico rojo con un toque moderno.</p>
+                <p class="price">Bs. 13</p>
+            </div>
+            <div class="card">
+                <img src="img/cup nute.jpg" alt="Cupcake Nutella">
+                <h3>Nutella Delicia</h3>
+                <p>Cremoso relleno con la famosa Nutella.</p>
+                <p class="price">Bs. 15</p>
+            </div>
+        </section>
+    </div>
+<!-- Botón de Regenerar -->
+<div class="regenerate-section">
+    <a href="menu.html" class="btn-regenerate">Regenerar Productos</a>
+</div>
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-content">
+          <div class="logo-section">
+              <div class="logo"><img src="img/Logofo.png" alt="Logo"></div>
+              <div class="description">
+                  Los cupcakes más deliciosos para todas tus celebraciones. ¡Ordena ahora!
+              </div>
+          </div>
+          <div class="info-section">
+              <div class="info-row">
+                  <div class="info-column">
+                      <div class="info-title">DIRECCIÓN</div>
+                      <div class="info-content">Av. Principal #1234, La Paz, Bolivia</div>
+                  </div>
+                  <div class="info-column">
+                      <div class="info-title">EMAIL</div>
+                      <div class="info-content">contacto@cupcakesdeliciosos.com</div>
+                  </div>
+              </div>
+              <div class="search-bar">
+                  <input type="text" class="search-input" placeholder="Buscar...">
+                  <button class="search-button">BUSCAR</button>
+              </div>
+          </div>
+      </div>
+  </footer>
+</body>
+</html>

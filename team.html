@@ -1,0 +1,262 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">x`
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- W3S Link -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/nuestro_equipo.css">
+    <style>
+        /* Estilos para boton flotante */
+        .floating-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #075299;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+        .icon {
+            z-index: 1500;
+        }
+
+        .accessibility-menu {
+            display: none;
+            position: fixed;
+            bottom: 70px;
+            right: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 15px;
+            border-radius: 10px;
+            z-index: 1000;
+        }
+
+        .accessibility-menu button {
+            display: block;
+            margin-bottom: 10px;
+            padding: 8px 10px;
+            width: 100%;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Botón flotante -->
+    <div class="floating-button" onclick="toggleMenu()">
+        Accesibilidad
+    </div>
+
+
+    <!-- Menú de accesibilidad -->
+    <div class="accessibility-menu" id="accessibilityMenu">
+        <button onclick="applyDarkContrast()">Contraste Oscuro</button>
+        <button onclick="applyInvert()">Invertir Colores</button>
+        <button onclick="increaseFontSize()">Agrandar Letra</button>
+        <button onclick="applyNormal()">Achicar letra</button>
+        <button onclick="applySaturation('low')">Saturación Baja</button>
+        <button onclick="applySaturation('high')">Saturación Alta</button>
+        <button onclick="applySaturation('none')">Saturación Nula</button>
+        <button onclick="reloadPage()">Reestablecer</button>
+    </div>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="img/LOGO.png" alt="Logo">
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">INICIO</a></li>
+            <li><a href="menu.html">MENÚ</a></li>
+            <li><a href="about.html">ACERCA DE</a></li>
+            <li><a href="promo.html">PROMOCIONES</a></li>
+            <li><a href="FAQ.html">FAQ</a></li>
+            <li><a href="redes.html">CONTACTO</a></li>
+        </ul>
+        <a href="#" class="btn-pedido"> Hacer pedido</a>
+    </nav>
+    <div class="w-full min-h-screen relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Hero Section -->
+            <div class="mt-40">
+                <h1
+                    class="text-[#c33535] text-6xl sm:text-7xl md:text-8xl font-lexend font-bold uppercase leading-tight">
+                    Conoce <br />Nuestro equipo</h1>
+                <p class="text-[#ff904f] text-xl mt-6">Personal especializado para las mejores delicias <br />y un
+                    equipo artístico par ti!</p>
+            </div>
+
+            <!-- Featured Section -->
+            <div class="mt-4 flex flex-col md:flex-row justify-between items-center">
+                <div>
+                    <h2 class="text-[#ff6b6b] text-4xl font-lexend font-bold uppercase leading-tight">
+                        Juntos por más<br />de 20 años</h2>
+                    <p class="text-grey-600 text-x3 mt-4 max-w-sm">Desde la ciudad de La Paz, Bolivia y
+                        hasta Chochabamba, nos mantenemos unidos</p>
+                    <button
+                        class="border-2 border-[#ad1d1c] text-[#ad1d1c] px-6 py-2 rounded-full m-4 transition duration-300 ease-in-out transform hover:bg-[#ad1d1c] hover:text-white hover:scale-105">
+                        <a href="about.html"><b>ACERCA DE NOSOTROS</b></a>
+                    </button>
+                </div>
+                <div class="mt-8 md:mt-0">
+                    <img src="https://images.unsplash.com/photo-1601001816339-74036796370c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        style="width: 700px;" alt="Postres destacados" class="rounded-lg" />
+                </div>
+            </div>
+
+            <!-- Quote Section-->
+            <div class="my-20 bg-[#ff6b6b] p-8 w-full rounded-lg">
+                <div class="mt-6">
+                    <div class="flex items-center space-x-6">
+                        <div class="w-24 h-24 bg-[#d9d9d9] rounded-full overflow-hidden">
+                            <img src="img/cheff_2.jpg" alt="Chef" class="w-full h-full object-cover rounded-full" />
+                        </div>
+                        <div>
+                            <p class="text-gray-800 text-xl font-bold">Valentina Montoya Echeverría</p>
+                            <p class="text-gray-800 text-xl mt-2">- Cheff Pastelera</p>
+                            <p class="text-gray-800 text-xl mt-2">- Torta de Tres Leches con Maracuyá, Pastel de
+                                Chocolate con Café Colombiano</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-10 flex justify-end">
+                    <div class="flex items-center space-x-6">
+                        <div>
+                            <p class="text-gray-800 text-xl font-bold">Gabriel Antonio Fuentes Riveros </p>
+                            <p class="text-gray-800 text-xl mt-2">- Cheff Pastelero</p>
+                            <p class="text-gray-800 text-xl mt-2">- Torta Rogel de Dulce de Leche, Selva Negra con
+                                Frutos Rojos</p>
+                        </div>
+                        <div class="w-24 h-24 bg-[#d9d9d9] rounded-full overflow-hidden">
+                            <img src="img/cheff_1.png" alt="Chef" class="w-full h-full object-cover" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-10">
+                    <div class="flex items-center space-x-6">
+                        <div class="w-24 h-24 bg-[#d9d9d9] rounded-full overflow-hidden">
+                            <img src="img/cheff_3.jpg" alt="Chef" class="w-full h-full object-cover rounded-full" />
+                        </div>
+                        <div>
+                            <p class="text-gray-800 text-xl font-bold">María Elena Paz Mendoza</p>
+                            <p class="text-gray-800 text-xl mt-2">- Cheff Repostera</p>
+                            <p class="text-gray-800 text-xl mt-2">- Cheesecake de Chirimoya, Torta de Quinua y Castañas
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Body Section -->
+        <div class="flex flex-wrap justify-center gap-10 mt-10">
+            <!-- Card 1 -->
+            <div class="w-[300px]  rounded-t-full overflow-hidden">
+                <img class="w-full rounded-t-full"
+                    src="https://images.unsplash.com/photo-1654851364020-3120600ee043?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    alt="Tarta de tres chocolates" />
+                <div class="text-center text-gray-800 text-xl mt-4"><b>Cheff gabriel</b><br>Torta cumpleaños</div>
+            </div>
+            <!-- Card 2 -->
+            <div class="w-[300px] rounded-t-full overflow-hidden">
+                <img class="w-full"
+                    src="https://images.unsplash.com/photo-1596151226676-18d0fdcc74ac?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    alt="Jamaica en la selva amazónica" />
+                <div class="text-center text-gray-800 text-xl mt-4"><b>Cheff valentina</b><br>Cupcake babyshower</div>
+            </div>
+            <!-- Card 3 -->
+            <div class="w-[300px]  rounded-t-full overflow-hidden">
+                <img class="w-full"
+                    src="https://images.unsplash.com/photo-1602288974253-8c26553434b0?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    alt="Copa de vainilla con buttercream de fresa" />
+                <div class="text-center text-gray-800 text-xl mt-4"><b>Cheff Maria</b><br>Torta revelación</div>
+            </div>
+        </div>
+        <!-- Footer -->
+        <footer class="footer mt-12">
+            <div class="footer-content">
+                <div class="logo-section">
+                    <div class="logo"><img src="img/Logofo.png" alt="a"></div>
+                    <div class="description">
+                        Más de 20 años brindando atención personalizada y garantizada para tus eventos. Tortas únicas.
+                        Crea
+                        tu diseño.
+                    </div>
+                </div>
+                <div class="info-section">
+                    <div class="info-row">
+                        <div class="info-column">
+                            <div class="info-title">DIRECCIÓN</div>
+                            <div class="info-content">Calle Chiriguanos esquina Gurasuwé #1467 zona Sarcobamba , La Paz,
+                                Bolivia</div>
+                        </div>
+                        <div class="info-column">
+                            <div class="info-title">EMAIL</div>
+                            <div class="info-content">helenn.duran.aguirre@gmail.com</div>
+                        </div>
+                    </div>
+                    <div class="search-bar">
+                        <input type="text" class="search-input" placeholder="Buscar...">
+                        <button class="search-button">BUSCAR</button>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <script>
+            // Función para mostrar/ocultar el menú
+            function toggleMenu() {
+                const menu = document.getElementById('accessibilityMenu');
+                menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+            }
+
+            // Función de contraste oscuro
+            function applyDarkContrast() {
+                document.body.style.backgroundColor = '#000';
+                document.body.style.color = '#39ff14'; /* Texto verde neón */
+                document.querySelectorAll('h1, h2, h3, h4, h5, h6').forEach(el => el.style.color = '#FFD700'); /* Títulos amarillos */
+            }
+
+            // Función para invertir colores
+            function applyInvert() {
+                document.body.style.filter = 'invert(1)';
+            }
+
+            // Función para agrandar el texto
+            function increaseFontSize() {
+                document.body.style.fontSize = 'larger';
+            }
+            //funcion para regresar a la normalidad
+            function applyNormal() {
+                document.body.style.filter = 'smaller';
+            }
+            //funcion para recargar la pagina/reestablecer
+            function reloadPage() {
+                location.reload();
+            }
+            // Función para modificar la saturación
+            function applySaturation(level) {
+                switch (level) {
+                    case 'low':
+                        document.body.style.filter = 'saturate(0.5)';
+                        break;
+                    case 'high':
+                        document.body.style.filter = 'saturate(2)';
+                        break;
+                    case 'none':
+                        document.body.style.filter = 'saturate(0)';
+                        break;
+                }
+            }
+        </script>
+</body>
+
+</html>

@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animaciones con Scroll</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      height: 100%;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Imagen fija al frente con animación fade-in */
+    .fixed-image {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-image: url('img/reposteriafinal.png');
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      animation: fadeIn 2s forwards; /* Animación al cargar la página */
+      z-index: 10;
+      pointer-events: none;
+    }
+
+    /* Imagen de hero con animación fade-in y fade-out */
+    .hero {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      background-image: url('img/heroreposteria.png');
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      animation: fadeIn 2s forwards 2s; /* Se anima después de la imagen fija */
+      z-index: 5;
+    }
+    .art {
+      position: relative;
+      width: 100vw;
+      height: 300vh;
+      background-image: url('img/art.png');
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      animation: fadeIn 2s forwards 2s; /* Se anima después de la imagen fija */
+      z-index: 5;
+    }
+    
+
+    .hero h1 {
+      color: white;
+      font-size: 48px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+
+    /* Contenedor de las cajas */
+    .container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr); /* 4 columnas */
+      gap: 20px;
+      padding: 50px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Cajas cuadradas */
+    .box {
+      background-color: white;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      text-align: center;
+      width: 100%; /* Para asegurarse de que llenen el espacio en el grid */
+      aspect-ratio: 1/1; /* Hace que la caja sea cuadrada */
+      opacity: 0; /* Oculto inicialmente */
+      transform: translateY(50px); /* Desplazado hacia abajo inicialmente */
+      transition: opacity 1s ease, transform 1s ease, box-shadow 0.3s ease; /* Transición suave */
+    }
+
+    /* Hover: Incremento de tamaño y drop shadow */
+    .box:hover {
+      transform: translateY(0) scale(1.05); /* Crece ligeramente al hacer hover */
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Drop shadow más fuerte */
+    }
+
+    /* Cajas de imágenes */
+    .box img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: cover; /* Hace que la imagen mantenga su proporción y cubra todo el espacio */
+      border-radius: 10px;
+    }
+
+    /* Cajas de texto con colores diferentes */
+    .text-box:nth-child(3n+1) {
+      background-color: #f8b400; /* Amarillo */
+      color: white;
+    }
+
+    .text-box:nth-child(3n+2) {
+      background-color: #000000; /* Azul */
+      color: white;
+    }
+
+    .text-box:nth-child(3n) {
+      background-color: #f14422; /* Verde */
+      color: white;
+    }
+
+    .text-box h3 {
+      margin-bottom: 10px;
+    }
+
+    /* Botón grande "Ver más" */
+    .ver-mas {
+      display: block;
+      margin: 50px auto;
+      width: 150px; /* Dimensión cuadrada */
+      height: 150px;
+      line-height: 150px; /* Centra el texto verticalmente */
+      font-size: 20px;
+      background-image: url('img/alt.png');
+      background-size: 550%;
+      color: white;
+      text-decoration: none;
+      text-align: center;
+
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      transition: background-color 0.3s ease, transform 0.3s ease; /* Transiciones */
+    }
+
+
+    .ver-mas:hover {
+      background-color: #f8b400;
+    }
+    .boton {
+        padding-bottom: 300px;
+    }
+    .desc {
+        height: 150px;
+    }
+    
+    /* Estilos adicionales para el scroll */
+    body {
+      height: 200vh; /* Se extiende la altura del contenido */
+      background-color: #f0f0f0;
+    }
+
+    /* Animaciones */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeOut {
+      from { opacity: 1; }
+      to { opacity: 0; }
+    }
+
+    /* Estilos para aplicar la animación al hacer scroll */
+    .fade-out {
+      animation: fadeOut 1s forwards;
+    }
+
+    .fade-in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .html, body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: #FFFAF4;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background-color: #fff;
+    border-bottom: 1px solid #eee;
+    position: fixed; /* Hace que el menú se mantenga fijo */
+    top: 0;
+    width: 100%;
+    z-index: 1000; /* Asegura que el menú esté por encima de otros elementos */
+    filter: drop-shadow(5px 5px 10px #1a0077);
+}
+
+.logo img {
+    height: 80px; /* Aumenta el tamaño del logo */
+    width: auto;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px; /* Aumenta la separación entre los enlaces */
+}
+
+.nav-links li {
+    display: inline;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+    padding: 5px 10px;
+}
+
+.nav-links a:hover {
+    color: #ff6b6b;
+}
+
+.btn-pedido {
+    background-color: #ff6b6b;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: bold;
+    border: none;
+}
+.btn-pedido:hover {
+    background-color: #ff4f4f;
+}
+.faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-answer.open {
+            max-height: 500px;
+        }
+
+        .faq-toggle-icon {
+            transform: rotate(0deg);
+            transition: transform 0.3s ease;
+        }
+
+        .faq-question.open .faq-toggle-icon {
+            transform: rotate(180deg);
+        }
+        .faq-question {
+            font-size: x-large;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">
+        <img src="img/LOGO.png" alt="Logo">
+    </div>
+    <ul class="nav-links">
+        <li><a href="index.html">INICIO</a></li>
+        <li><a href="menu.html">MENÚ</a></li>
+        <li><a href="about.html">ACERCA DE</a></li>
+        <li><a href="promo.html">PROMOCIONES</a></li>
+        <li><a href="FAQ.html">FAQ</a></li>
+        <li><a href="redes.html">CONTACTO</a></li>
+    </ul>
+        <a href="#" class="btn-pedido"> Hacer pedido</a>
+</nav>
+
+  <!-- Imagen fija al frente -->
+  <div class="fixed-image"></div>
+  <div class="hero">
+  </div>
+
+  <!-- Hero con animación -->
+  <div class="max-w-screen-lg mx-auto px-4 py-8">
+    <div class="faq-section mx-auto w-full md:w-1/3 bg-[#FFFAF4] rounded-lg shadow-lg">
+
+        <!-- Preguntas -->
+        <div class="faq-item">
+            <div class="faq-question flex justify-between items-center cursor-pointer" onclick="toggleFaq(this)">
+                ¿Con cuánta anticipación debo hacer un pedido?
+                <span class="faq-toggle-icon">▼</span>
+            </div>
+            <div class="faq-answer text-[#555]">Para pedidos personalizados, recomendamos realizar el pedido con al menos 7 días de anticipación.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question flex justify-between items-center cursor-pointer" onclick="toggleFaq(this)">
+                ¿Usan ingredientes orgánicos?
+                <span class="faq-toggle-icon">▼</span>
+            </div>
+            <div class="faq-answer text-[#555]">Sí, utilizamos ingredientes orgánicos y de alta calidad en todas nuestras preparaciones.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question flex justify-between items-center cursor-pointer" onclick="toggleFaq(this)">
+                ¿Puedo solicitar un diseño específico para mi pastel?
+                <span class="faq-toggle-icon">▼</span>
+            </div>
+            <div class="faq-answer text-[#555]">Por supuesto, nos especializamos en personalización. Puedes enviarnos una foto o idea para tu diseño.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question flex justify-between items-center cursor-pointer" onclick="toggleFaq(this)">
+                ¿Ofrecen opciones sin gluten o sin azúcar?
+                <span class="faq-toggle-icon">▼</span>
+            </div>
+            <div class="faq-answer text-[#555]">Sí, ofrecemos opciones sin gluten y sin azúcar. Por favor, indícanos tus requerimientos al hacer el pedido.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question flex justify-between items-center cursor-pointer" onclick="toggleFaq(this)">
+                ¿Cuáles son las opciones de pago disponibles?
+                <span class="faq-toggle-icon">▼</span>
+            </div>
+            <div class="faq-answer text-[#555]">Aceptamos pagos en efectivo, transferencias bancarias y tarjetas de crédito/débito.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question flex justify-between items-center cursor-pointer" onclick="toggleFaq(this)">
+                ¿Puedo cancelar un pedido después de hacerlo?
+                <span class="faq-toggle-icon">▼</span>
+            </div>
+            <div class="faq-answer text-[#555]">Sí, puedes cancelar un pedido, pero debes avisarnos al menos 48 horas antes de la fecha de entrega.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question flex justify-between items-center cursor-pointer" onclick="toggleFaq(this)">
+                ¿Qué tamaño de pastel debo pedir para mi evento?
+                <span class="faq-toggle-icon">▼</span>
+            </div>
+            <div class="faq-answer text-[#555]">Recomendamos calcular unas 100-150 g de pastel por persona. Podemos ayudarte a decidir el tamaño ideal.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question flex justify-between items-center cursor-pointer" onclick="toggleFaq(this)">
+                ¿Cuánto tiempo duran frescos sus pasteles?
+                <span class="faq-toggle-icon">▼</span>
+            </div>
+            <div class="faq-answer text-[#555]">Nuestros pasteles son frescos y se mantienen en óptimas condiciones por 2-3 días si se refrigeran adecuadamente.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question flex justify-between items-center cursor-pointer" onclick="toggleFaq(this)">
+                ¿Puedo solicitar la entrega a domicilio?
+                <span class="faq-toggle-icon">▼</span>
+            </div>
+            <div class="faq-answer text-[#555]">Sí, ofrecemos servicio de entrega a domicilio dentro de la ciudad. Consulta nuestras tarifas según tu ubicación.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question flex justify-between items-center cursor-pointer" onclick="toggleFaq(this)">
+                ¿Qué sabores de pastel ofrecen?
+                <span class="faq-toggle-icon">▼</span>
+            </div>
+            <div class="faq-answer text-[#555]">Ofrecemos una variedad de sabores, incluyendo chocolate, vainilla, red velvet, zanahoria y más.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question flex justify-between items-center cursor-pointer" onclick="toggleFaq(this)">
+                ¿Puedo incluir un mensaje personalizado en el pastel?
+                <span class="faq-toggle-icon">▼</span>
+            </div>
+            <div class="faq-answer text-[#555]">Sí, podemos agregar mensajes personalizados en tus pasteles. Indícanos el texto al hacer el pedido.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question flex justify-between items-center cursor-pointer" onclick="toggleFaq(this)">
+                ¿Cuánto cuesta un pastel personalizado?
+                <span class="faq-toggle-icon">▼</span>
+            </div>
+            <div class="faq-answer text-[#555]">El precio depende del tamaño, diseño y detalles personalizados. Contáctanos para un presupuesto.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question flex justify-between items-center cursor-pointer" onclick="toggleFaq(this)">
+                ¿Hacen pasteles temáticos para niños?
+                <span class="faq-toggle-icon">▼</span>
+            </div>
+            <div class="faq-answer text-[#555]">¡Sí! Creamos pasteles temáticos con personajes y decoraciones ideales para fiestas infantiles.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question flex justify-between items-center cursor-pointer" onclick="toggleFaq(this)">
+                ¿Ofrecen degustaciones antes de hacer un pedido grande?
+                <span class="faq-toggle-icon">▼</span>
+            </div>
+            <div class="faq-answer text-[#555]">Sí, ofrecemos sesiones de degustación para pedidos grandes, como bodas o eventos corporativos.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question flex justify-between items-center cursor-pointer" onclick="toggleFaq(this)">
+                ¿Hacen envíos a otras ciudades?
+                <span class="faq-toggle-icon">▼</span>
+            </div>
+            <div class="faq-answer text-[#555]">Por el momento, no hacemos envíos fuera de la ciudad para garantizar la frescura de los productos.</div>
+        </div>
+
+    </div>
+</div>
+
+  <script>
+    // Detecta el scroll para hacer fade-out de la imagen hero
+    window.addEventListener('scroll', function() {
+      const hero = document.querySelector('.hero');
+      const scrollY = window.scrollY;
+
+      if (scrollY > 50) {
+        hero.classList.add('fade-out');
+      } else {
+        hero.classList.remove('fade-out');
+      }
+    });
+
+    // Detecta cuándo cada caja está en el viewport para hacer fade-in
+    const boxes = document.querySelectorAll('.box');
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('fade-in');
+          observer.unobserve(entry.target); // Deja de observar una vez que la animación ha sido disparada
+        }
+      });
+    }, {
+      threshold: 0.1 // Empieza a animar cuando el 10% de la caja es visible
+    });
+
+    boxes.forEach(box => {
+      observer.observe(box);
+    });
+    function toggleFaq(element) {
+            const answer = element.nextElementSibling;
+            answer.classList.toggle('open');
+            element.classList.toggle('open');
+        }
+  </script>
+
+</body>
+</html>

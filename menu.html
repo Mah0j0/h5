@@ -1,0 +1,335 @@
+<!DOCTYPE html> 
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sitio Web con Hero y Navegación Fija</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .content {
+            flex: 1;
+        }
+        .footer {
+            background-color: #4a0e0e;
+            color: #ffffff;
+            padding: 20px;
+        }
+        .footer-content {
+            display: flex;
+            max-width: 1200px;
+            margin: 0 auto;
+            border-top: 1px solid rgba(255,255,255,0.3);
+            border-bottom: 1px solid rgba(255,255,255,0.3);
+            padding: 20px 0;
+        }
+        .logo-section {
+            flex: 1;
+            padding-right: 20px;
+            border-right: 1px solid rgba(255,255,255,0.3);
+        }
+        .logo {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .tagline {
+            font-style: italic;
+            font-size: 14px;
+        }
+        .description {
+            font-size: 12px;
+            margin-top: 20px;
+        }
+        .info-section {
+            flex: 2;
+            display: flex;
+            flex-direction: column;
+            padding-left: 20px;
+        }
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .info-column {
+            flex: 1;
+        }
+        .info-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .info-content {
+            font-size: 12px;
+        }
+        .search-bar {
+            display: flex;
+        }
+        .search-input {
+            flex-grow: 1;
+            padding: 5px;
+            border: none;
+            background-color: transparent;
+            border-bottom: 1px solid #ffffff;
+            color: #ffffff;
+        }
+        .search-button {
+            background-color: #ffffff;
+            color: #4a0e0e;
+            border: none;
+            padding: 5px 15px;
+            cursor: pointer;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)); /* Degradado de negro a transparente */
+            background-blend-mode: multiply; /* Efecto multiplicar */
+
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .logo img {
+            height: 80px;
+            width: auto;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links li {
+            display: inline;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #fff; /* Texto en blanco */
+            font-weight: bold;
+            padding: 5px 10px;
+        }
+
+        .nav-links a:hover {
+            color: #ff6b6b;
+        }
+
+        .btn-pedido {
+            background-color: #fff; /* Fondo blanco */
+            color: #000; /* Texto en negro */
+            padding: 10px 20px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            border: none;
+        }
+
+        .btn-pedido:hover {
+            background-color: #ff4f4f;
+            color: #fff; /* Cambia el texto a blanco al hacer hover */
+        }
+
+        body {
+            padding-top: 100px;
+        }
+
+        .hero {
+            height: 75vh;
+            background-image: url('img/hero.png');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: -100px;
+        }
+
+        .hero-text-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .hero-text-container h1 {
+            font-size: 48px;
+            color: black;
+        }
+
+        .menu {
+            display: flex;
+            flex-direction: column;
+            padding: 100px 80px;
+            gap: 50px;
+        }
+
+        .card {
+            display: flex;
+            padding: 0px;
+            background-color: #f0f0f0;
+            border-radius: 50px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            height: 500px;
+            transition: transform 0.3s ease;
+            color: white;
+            overflow: hidden;
+            margin-left: 15%;
+            margin-right: 15%;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+        .card-link {
+         text-decoration: none; /* Quita el subrayado del enlace */
+         color: inherit; /* Hereda el color del texto */
+          display: block; /* Asegura que el enlace cubra toda la tarjeta */
+          }
+
+        .card-content {
+            flex: 1;
+            text-align: left;
+            margin: 100px;
+            padding-right: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .card-content h2 {
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+
+        .card-content p {
+            font-size: 20px;
+            line-height: 1.6;
+        }
+
+        .card-img {
+            flex-basis: 50%;
+            overflow: hidden;
+            border-radius: 0;
+        }
+
+        .card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card:nth-child(1) {
+            background-color: #FF565A;
+        }
+
+        .card:nth-child(2) {
+            background-color: #5E1818;
+        }
+
+        .card:nth-child(3) {
+            background-color: #E1932B;
+        }
+    </style>
+</head>
+<body>
+    <!-- Barra de navegación -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="img/LOGO.png" alt="Logo">
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">INICIO</a></li>
+            <li><a href="menu.html">MENÚ</a></li>
+            <li><a href="about.html">ACERCA DE</a></li>
+            <li><a href="promo.html">PROMOCIONES</a></li>
+            <li><a href="FAQ.html">FAQ</a></li>
+            <li><a href="redes.html">CONTACTO</a></li>
+        </ul>
+        <a href="#" class="btn-pedido">Hacer pedido</a>
+    </nav>
+
+    <!-- Sección Hero -->
+    <section class="hero"></section>
+
+    <!-- Texto debajo del Hero -->
+    <div class="hero-text-container">
+        <h1>¿Qué se te antoja hoy?</h1>
+    </div>
+
+    <!-- Sección de Cartas -->
+    <section class="menu">
+        <a href="menudecup.html" class="card-link">
+        <div class="card">
+            <div class="card-content">
+                <h2>Cupcakes</h2>
+                <p>Galletas, cupcakes y tortas 100% personalizables para cualquier evento</p>
+            </div>
+            <div class="card-img">
+                <img src="img/2.jpg" alt="Imagen 1">
+            </div>
+        </div>
+        </a>
+
+        <a href="menudec.html" class="card-link">
+            <div class="card">
+                <div class="card-content">
+                    <h2>Masas Dulces</h2>
+                    <p>Galletas, cupcakes y tortas 100% personalizables para cualquier evento</p>
+                </div>
+                <div class="card-img">
+                    <img src="img/1.jpg" alt="Imagen 2">
+                </div>
+            </div>
+        </a>
+        <a href="menusa.html" class="card-link">
+        <div class="card">
+            <div class="card-content">
+                <h2>Masas Saladas</h2>
+                <p>Galletas, cupcakes y tortas 100% personalizables para cualquier evento</p>
+            </div>
+            <div class="card-img">
+                <img src="img/3.jpg" alt="Imagen 3">
+            </div>
+        </div>
+    </a>
+    </section>
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="logo-section">
+                <div class="logo"><img src="img/Logofo.png" alt="a"></div>
+                <div class="description">
+                    Más de 20 años brindando atención personalizada y garantizada para tus eventos. Tortas únicas. Crea tu diseño.
+                </div>
+            </div>
+            <div class="info-section">
+                <div class="info-row">
+                    <div class="info-column">
+                        <div class="info-title">DIRECCIÓN</div>
+                        <div class="info-content">Calle Chiriguanos esquina Gurasuwé #1467 zona Sarcobamba , La Paz, Bolivia</div>
+                    </div>
+                    <div class="info-column">
+                        <div class="info-title">EMAIL</div>
+                        <div class="info-content">helenn.duran.aguirre@gmail.com</div>
+                    </div>
+                </div>
+                <div class="search-bar">
+                    <input type="text" class="search-input" placeholder="Buscar...">
+                    <button class="search-button">BUSCAR</button>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

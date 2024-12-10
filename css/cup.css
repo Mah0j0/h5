@@ -1,0 +1,128 @@
+/* Navbar existente */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-bottom: 2px solid #eec9dc;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    font-family: 'Cinzel', serif;
+  }
+
+  .logo img {
+    height: 80px;
+    width: auto;
+  }
+
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: #ff6b6b;
+    font-weight: bold;
+  }
+
+  .btn-pedido {
+    background-color: #ff6b6b;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+  }
+    /* footer */
+  
+.footer {
+    background-color: #4a0e0e;
+    color: #ffffff;
+    padding: 20px;
+}
+.footer-content {
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
+    border-top: 1px solid rgba(255,255,255,0.3);
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+    padding: 20px 0;
+}
+.logo-section {
+    flex: 1;
+    padding-right: 20px;
+    border-right: 1px solid rgba(255,255,255,0.3);
+}
+.logo {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.tagline {
+    font-style: italic;
+    font-size: 14px;
+}
+.description {
+    font-size: 12px;
+    margin-top: 20px;
+}
+.info-section {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    padding-left: 20px;
+}
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+.info-column {
+    flex: 1;
+}
+.info-title {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+.info-content {
+    font-size: 12px;
+}
+.search-bar {
+    display: flex;
+}
+.search-input {
+    flex-grow: 1;
+    padding: 5px;
+    border: none;
+    background-color: transparent;
+    border-bottom: 1px solid #ffffff;
+    color: #ffffff;
+}
+.search-button {
+    background-color: #ffffff;
+    color: #4a0e0e;
+    border: none;
+    padding: 5px 15px;
+    cursor: pointer;
+}
+
+.contact-button {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background-color: #800221;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.1s ease;
+}
+.contact-button:hover {
+    background-color: #4b212e;
+}

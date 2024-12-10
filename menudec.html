@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galería Renacentista</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300&display=swap">
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: 'Playfair Display', serif;
+            margin: 0;
+            padding: 0;
+            padding-top: 100px; /* Espacio para la barra fija */
+            background-color: #f8f4e6;
+            color: #4a2f24;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 3rem;
+            margin: 20px 0;
+            color: #804000;
+            text-transform: uppercase;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 100px auto 0; /* Ajusta el margen superior para evitar superposición con el menú */
+            padding: 20px;
+        }
+
+        /* Barra de navegación */
+        .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background-color: #fff;
+    border-bottom: 1px solid #eee;
+    position: fixed; /* Hace que el menú se mantenga fijo */
+    top: 0;
+    width: 100%;
+    z-index: 1000; /* Asegura que el menú esté por encima de otros elementos */
+
+}
+
+.logo img {
+    height: 80px; /* Aumenta el tamaño del logo */
+    width: auto;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px; /* Aumenta la separación entre los enlaces */
+}
+
+.nav-links li {
+    display: inline;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+    padding: 5px 10px;
+}
+
+.nav-links a:hover {
+    color: #ff6b6b;
+}
+
+.btn-pedido {
+    background-color: #ff6b6b;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: bold;
+    border: none;
+}
+.btn-pedido:hover {
+    background-color: #ff4f4f;
+}
+
+        /* Galería de productos */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            background-color: #fff;
+            border: 2px solid #d4ad76;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .card img {
+            width: 100%;
+            height: auto;
+            border-bottom: 2px solid #d4ad76;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card h3 {
+            margin: 15px 0;
+            font-size: 1.5rem;
+            color: #4a2f24;
+        }
+
+        .card p {
+            margin: 10px;
+            font-size: 1rem;
+        }
+
+        .card .price {
+            font-weight: bold;
+            color: #804000;
+        }
+
+        /* Responsividad */
+        @media (max-width: 768px) {
+            .gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #4a0e0e;
+            color: #ffffff;
+            padding: 20px;
+        }
+        .footer-content {
+            display: flex;
+            max-width: 1200px;
+            margin: 0 auto;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 20px 0;
+        }
+        .logo-section {
+            flex: 1;
+            padding-right: 20px;
+            border-right: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .logo {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .tagline {
+            font-style: italic;
+            font-size: 14px;
+        }
+        .description {
+            font-size: 12px;
+            margin-top: 20px;
+        }
+        .info-section {
+            flex: 2;
+            display: flex;
+            flex-direction: column;
+            padding-left: 20px;
+        }
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .info-column {
+            flex: 1;
+        }
+        .info-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .info-content {
+            font-size: 12px;
+        }
+        .search-bar {
+            display: flex;
+        }
+        .search-input {
+            flex-grow: 1;
+            padding: 5px;
+            border: none;
+            background-color: transparent;
+            border-bottom: 1px solid #ffffff;
+            color: #ffffff;
+        }
+        .search-button {
+            background-color: #ffffff;
+            color: #4a0e0e;
+            border: none;
+            padding: 5px 15px;
+            cursor: pointer;
+        }
+             /* Botón regenerar con temática renacentista moderna */
+.btn-regenerate {
+    background-color: #c4511a;
+    color: #fff;
+    padding: 12px 30px;
+    border-radius: 10px;
+    font-family: 'Playfair Display', serif;
+    font-weight: bold;
+    border: 2px solid #b8860b;
+    text-transform: uppercase;
+    text-decoration: none; /* Eliminar subrayado */
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn-regenerate:hover {
+    background-color: #a03e16;
+    transform: scale(1.05);
+}
+
+/* Centrar el botón */
+.regenerate-section {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+}
+    </style>
+</head>
+<body>
+    <!-- Barra de navegación -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="img/LOGO.png" alt="Logo">
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">INICIO</a></li>
+            <li><a href="menu.html">MENÚ</a></li>
+            <li><a href="about.html">ACERCA DE</a></li>
+            <li><a href="promo.html">PROMOCIONES</a></li>
+            <li><a href="FAQ.html">FAQ</a></li>
+            <li><a href="redes.html">CONTACTO</a></li>
+        </ul>
+        <a href="#" class="btn-pedido">Hacer pedido</a>
+    </nav>
+
+    <header>
+        <h1>MASAS DULCES</h1>
+        <h2>Sabores que trascienden el tiempo</h2>
+    </header>
+    <div class="container">
+        <section class="gallery">
+            <!-- Tarjetas de productos -->
+            <div class="card">
+                <img src="img/pastel limon.jpg" alt="Delicia dorada">
+                <h3>Delicia Dorada</h3>
+                <p>Un toque de oro en cada bocado.</p>
+                <p class="price">Bs. 15</p>
+            </div>
+            <div class="card">
+                <img src="img/pastel zanahoria.jpg" alt="Clásico Toscano">
+                <h3>Clásico Zanahoria</h3>
+                <p>Elaborado con técnicas tradicionales.</p>
+                <p class="price">Bs. 18</p>
+            </div>
+            <div class="card">
+                <img src="img/pasetel piña.jpg" alt="Esencia Florentina">
+                <h3>Esencia Florentina</h3>
+                <p>El sabor del Renacimiento en tus manos.</p>
+                <p class="price">Bs. 12</p>
+            </div>
+            <div class="card">
+                <img src="img/pastel choco.jpg" alt="Tarta de Venecia">
+                <h3>Tarta de Chocolate</h3>
+                <p>Sabores frescos del Adriático.</p>
+                <p class="price">Bs. 20</p>
+            </div>
+            <div class="card">
+                <img src="img/pastel fresa.jpg" alt="Perla del Renacimiento">
+                <h3>Perlas Rosadas</h3>
+                <p>Arte y sabor en perfecta armonía.</p>
+                <p class="price">Bs. 22</p>
+            </div>
+            <div class="card">
+                <img src="img/pastel navideña.jpg" alt="Manjar Florentino">
+                <h3>Manjar Navideño</h3>
+                <p>Inspirado en la cuna del arte navideño.</p>
+                <p class="price">Bs. 25</p>
+            </div>
+        </section>
+    </div>
+ <!-- Botón de Regenerar -->
+<div class="regenerate-section">
+  <a href="menu.html" class="btn-regenerate">Regenerar Productos</a>
+</div>
+ <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-content">
+          <div class="logo-section">
+              <div class="logo"><img src="img/Logofo.png" alt="a"></div>
+              <div class="description">
+                  Más de 20 años brindando atención personalizada y garantizada para tus eventos. Tortas únicas. Crea tu diseño.
+              </div>
+          </div>
+          <div class="info-section">
+              <div class="info-row">
+                  <div class="info-column">
+                      <div class="info-title">DIRECCIÓN</div>
+                      <div class="info-content">Calle Chiriguanos esquina Gurasuwé #1467 zona Sarcobamba , La Paz, Bolivia</div>
+                  </div>
+                  <div class="info-column">
+                      <div class="info-title">EMAIL</div>
+                      <div class="info-content">helenn.duran.aguirre@gmail.com</div>
+                  </div>
+              </div>
+              <div class="search-bar">
+                  <input type="text" class="search-input" placeholder="Buscar...">
+                  <button class="search-button">BUSCAR</button>
+              </div>
+          </div>
+      </div>
+  </footer>
+</body>
+</html>

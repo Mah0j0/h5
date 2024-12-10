@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Repostería Fina - Sobre Nosotros</title>
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- W3S Link -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/paralax.css">
+    <!-- A-Frame -->
+    <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
+    <style>
+         /* Galería de productos */
+         .container {
+            max-width: 1200px;
+            margin: 100px auto 0; /* Ajusta el margen superior para evitar superposición con el menú */
+            padding: 20px;
+        }
+         .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            background-color: #fff;
+            border: 2px solid #d4ad76;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .card img {
+            width: 100%;
+            height: auto;
+            border-bottom: 2px solid #d4ad76;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card h3 {
+            margin: 15px 0;
+            font-size: 1.5rem;
+            color: #4a2f24;
+        }
+
+        .card p {
+            margin: 10px;
+            font-size: 1rem;
+        }
+
+        .card .price {
+            font-weight: bold;
+            color: #804000;
+        }
+
+        /* Responsividad */
+        @media (max-width: 768px) {
+            .gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="img/Logo (1).png" alt="Logo">
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">INICIO</a></li>
+            <li><a href="menu.html">MENÚ</a></li>
+            <li><a href="about.html">ACERCA DE</a></li>
+            <li><a href="promo.html">PROMOCIONES</a></li>
+            <li><a href="FAQ.html">FAQ</a></li>
+            <li><a href="redes.html">CONTACTO</a></li>
+        </ul>
+        <a href="#" class="btn-pedido"> Hacer pedido</a>
+    </nav>
+    <!-- producto individual -->
+     <div>
+        <div class="container mx-auto my-10 p-4 rounded-lg shadow-md bg-white">
+            <div class="flex flex-col md:flex-row">
+              <div class="md:w-1/2 flex items-center justify-center">
+                <a href="objeto1.html" target="blank"><img src="img/cup fresa.jpg" alt="Choco Bomb Muffin" class="w-700 h-700 rounded-lg"></a>
+              </div>
+              <div class="md:w-1/2 mt-4 md:mt-0 md:ml-6">
+                <h1 class="text-2xl font-bold text-gray-800">Choco Bomb Muffin</h1>
+                <p class="text-gray-600 mt-2">Código de producto: LMX302</p>
+                <p class="text-3xl font-bold text-red-500 mt-4">Bs. 7</p>
+                <button style="margin-left: 20em" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded mt-4">
+                  ORDENA YA
+                </button>
+                <div class="mt-6">
+                  <h2 class="text-lg font-bold text-gray-800">DESCRIPCIÓN</h2>
+                  <p class="text-gray-600 mt-2">Apto para todos los públicos. Los amantes del chocolate no podrán resistirse a esta auténtica maravilla. Un bocado tierno, fundente y delicioso. Una masa de cacao esponjosa rellena de crema de cacao con avellanas (15%) y decorada con cubitos de chocolate (7,3%).</p>
+                </div>
+              </div>
+            </div>
+          </div>
+     </div>
+    <!-- productos varios -->
+    <div class="container">
+        <section class="gallery">
+            <!-- Tarjetas de productos -->
+            <div class="card">
+                <img src="img/pastel limon.jpg" alt="Delicia dorada">
+                <h3>Delicia Dorada</h3>
+                <p>Un toque de oro en cada bocado.</p>
+                <p class="price">Bs. 15</p>
+            </div>
+            <div class="card">
+                <img src="img/pastel zanahoria.jpg" alt="Clásico Toscano">
+                <h3>Clásico Zanahoria</h3>
+                <p>Elaborado con técnicas tradicionales.</p>
+                <p class="price">Bs. 18</p>
+            </div>
+            <div class="card">
+                <img src="img/pasetel piña.jpg" alt="Esencia Florentina">
+                <h3>Esencia Florentina</h3>
+                <p>El sabor del Renacimiento en tus manos.</p>
+                <p class="price">Bs. 12</p>
+            </div>
+        </section>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="logo-section">
+                <div class="logo"><img src="img/Layer_1.png" alt="Logo Footer"></div>
+                <div class="description">
+                    Más de 20 años brindando atención personalizada y garantizada para tus eventos. Tortas únicas. Crea tu diseño.
+                </div>
+            </div>
+            <div class="info-section">
+                <div class="info-row">
+                    <div class="info-column">
+                        <div class="info-title">DIRECCIÓN</div>
+                        <div class="info-content">Calle Chiriguanos esquina Gurasuwé #1467 zona Sarcobamba, Cochabamba, Bolivia</div>
+                    </div>
+                    <div class="info-column">
+                        <div class="info-title">EMAIL</div>
+                        <div class="info-content">helenn.duran.aguirre@gmail.com</div>
+                    </div>
+                </div>
+                <div class="search-bar">
+                    <input type="text" class="search-input" placeholder="Buscar...">
+                    <button class="search-button">BUSCAR</button>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+</body>
+
+</html>
